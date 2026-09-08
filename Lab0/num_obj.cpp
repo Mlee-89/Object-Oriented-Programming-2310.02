@@ -23,7 +23,7 @@ int main() {
     cout << "char_example: " << sizeof(char_example) << endl;
     cout << "bool_example: " << sizeof(bool_example) << endl;
     cout << "arr_int_example: " << sizeof(arr) << endl;
-    cout << "arr(0): " << arr[0] << endl;
-    cout << "arr(1): " << arr[1] << endl;
+    //cout << "arr(0): " << arr[0] << endl;
+    //cout << "arr(1): " << arr[1] << endl;
     return 0;
 }
