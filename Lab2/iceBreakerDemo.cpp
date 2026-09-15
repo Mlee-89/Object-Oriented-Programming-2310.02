@@ -19,6 +19,9 @@ using namespace std;
 //------------------------PROTOTYPE-------------------------------------------
 void promptFile(vector<string> &); 
 void printVec(vector<string>);
+int ranGen();
+bool readFile(string, vector<string> &);
+bool writeFile(string, const vector<string> &, const vector<string> &);
 
 /**
  * @brief randomly returns a number from 0 to 5.
@@ -27,10 +30,7 @@ void printVec(vector<string>);
  * TO DO:
  * Modify it so that randGen() reads in 
  * the size of the questions instead of 6 (e.g. questions.size())
- * 
- * TO DO:
- * Use <random> for modern C++ random generation instead 
- * 
+ *
  * @return int: index of question
  */
 int ranGen(){
@@ -48,14 +48,14 @@ int ranGen(){
  * ​​​Return a bool instead in order to indicate whether the operation
  * succeeded or not
  */
-void readFile(string filename, vector<string> & vec) {
+bool readFile(string filename, vector<string> & vec) {
 
    ifstream inputFile(filename);
 
     //error handling
     if (!inputFile.is_open()) {
         cerr << "Error: Could not open file\n";
-        return;
+        return false;
     }
 
     string line;
@@ -65,7 +65,7 @@ void readFile(string filename, vector<string> & vec) {
     }
 
     inputFile.close();
-    return;
+    return true;
 }
 /**
  * @brief writes to filename with the first column from v0, second column from v1
@@ -87,11 +87,12 @@ void readFile(string filename, vector<string> & vec) {
  * -  pass by value (e.g. vector<string> v0),
  * -  pass by const reference (e.g. const vector<string> & v0),
  */
-void writeFile(string filename, vector<string> v0, vector<string> v1){
+bool writeFile(string filename, const vector<string> & v0, const vector<string> & v1){
 
     ofstream outputFile(filename);
      if (!outputFile) {
         cout << "Error: Could not create data.csv" << endl;
+        return false;
     }
 
     // write under the structure:
@@ -100,6 +101,7 @@ void writeFile(string filename, vector<string> v0, vector<string> v1){
         outputFile << v0[i] << "," << v1[ranGen()] << endl;
     }
     outputFile.close();
+    return true;
 
 }
 
