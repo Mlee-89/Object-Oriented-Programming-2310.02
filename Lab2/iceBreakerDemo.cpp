@@ -19,7 +19,7 @@ using namespace std;
 //------------------------PROTOTYPE-------------------------------------------
 void promptFile(vector<string> &); 
 void printVec(vector<string>);
-int ranGen();
+int ranGen(const vector<string> &);
 bool readFile(string, vector<string> &);
 bool writeFile(string, const vector<string> &, const vector<string> &);
 
@@ -27,14 +27,10 @@ bool writeFile(string, const vector<string> &, const vector<string> &);
  * @brief randomly returns a number from 0 to 5.
  * - It is hardcoded to be from 0 to 5.
  * - Uses srand(nullptr) in main()
- * TO DO:
- * Modify it so that randGen() reads in 
- * the size of the questions instead of 6 (e.g. questions.size())
- *
  * @return int: index of question
  */
-int ranGen(){
-    int randomNumber = rand() % 6;  // 0 through 5
+int ranGen(const vector<string> & questions){
+    int randomNumber = rand() % questions.size();  // 0 through questions.size() - 1
     return randomNumber;
 }
 
@@ -43,10 +39,6 @@ int ranGen(){
  * 
  * @param filename :string 
  * @param vec: vector<string> &
- * 
- * TO DO: 
- * ​​​Return a bool instead in order to indicate whether the operation
- * succeeded or not
  */
 bool readFile(string filename, vector<string> & vec) {
 
@@ -73,14 +65,6 @@ bool readFile(string filename, vector<string> & vec) {
  * @param filename: string
  * @param v0: vector<string> (for students names)
  * @param v1: vector<string> (for questions)
- * 
- * TO DO: 
- * ​​​Return a bool instead in order to indicate whether the operation
- * succeeded or not
- * 
- * TO DO:
- * ​​Use pass by const reference (const vector<string> & v0, const vector<string> & v1)
- * as opposed to pass by value (vector<string> v0, vector<string> v1). 
  * 
  * What is the differennce between:
  * -  pass by reference (e.g. vector<string> & v0),
