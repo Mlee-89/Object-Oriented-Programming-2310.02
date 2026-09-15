@@ -3,11 +3,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-/**
- * TO DO: 
- * Add <vector>, <cstdlib>, and <ctime>​
- */
-
+#include <random>
 using namespace std;
 
 /**
@@ -23,22 +19,18 @@ using namespace std;
 //------------------------PROTOTYPE-------------------------------------------
 void promptFile(vector<string> &); 
 void printVec(vector<string>);
-
+int ranGen(vector<string> &);
+bool readFile(string, vector<string> &);
+bool writeFile(string, vector<string>, vector<string>);
 /**
  * @brief randomly returns a number from 0 to 5.
  * - It is hardcoded to be from 0 to 5.
  * - Uses srand(nullptr) in main()
- * TO DO:
- * Modify it so that randGen() reads in 
- * the size of the questions instead of 6 (e.g. questions.size())
- * 
- * TO DO:
- * Use <random> for modern C++ random generation instead 
  * 
  * @return int: index of question
  */
-int ranGen(){
-    int randomNumber = rand() % 6;  // 0 through 5
+int ranGen(vector<string> & questions){
+    int randomNumber = rand() % questions.size();  // 0 through questions.size() - 1
     return randomNumber;
 }
 
@@ -48,18 +40,16 @@ int ranGen(){
  * @param filename :string 
  * @param vec: vector<string> &
  * 
- * TO DO: 
- * ​​​Return a bool instead in order to indicate whether the operation
- * succeeded or not
+ * 
  */
-void readFile(string filename, vector<string> & vec) {
+bool readFile(string filename, vector<string> & vec) {
 
    ifstream inputFile(filename);
 
     //error handling
     if (!inputFile.is_open()) {
         cerr << "Error: Could not open file\n";
-        return;
+        return false;
     }
 
     string line;
@@ -69,7 +59,7 @@ void readFile(string filename, vector<string> & vec) {
     }
 
     inputFile.close();
-    return;
+    return true;
 }
 /**
  * @brief writes to filename with the first column from v0, second column from v1
@@ -78,9 +68,7 @@ void readFile(string filename, vector<string> & vec) {
  * @param v0: vector<string> (for students names)
  * @param v1: vector<string> (for questions)
  * 
- * TO DO: 
- * ​​​Return a bool instead in order to indicate whether the operation
- * succeeded or not
+ *
  * 
  * TO DO:
  * ​​Use pass by const reference (const vector<string> & v0, const vector<string> & v1)
@@ -91,11 +79,12 @@ void readFile(string filename, vector<string> & vec) {
  * -  pass by value (e.g. vector<string> v0),
  * -  pass by const reference (e.g. const vector<string> & v0),
  */
-void writeFile(string filename, vector<string> v0, vector<string> v1){
+ bool writeFile(string filename, vector<string> v0, vector<string> v1){
 
     ofstream outputFile(filename);
      if (!outputFile) {
         cout << "Error: Could not create data.csv" << endl;
+        return false;
     }
 
     // write under the structure:
@@ -104,7 +93,7 @@ void writeFile(string filename, vector<string> v0, vector<string> v1){
         outputFile << v0[i] << "," << v1[ranGen()] << endl;
     }
     outputFile.close();
-
+    return true;
 }
 
 
