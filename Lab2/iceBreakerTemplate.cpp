@@ -27,10 +27,14 @@ bool writeFile(string, const vector<string> &, const vector<string> &);
  * @brief randomly returns a number from 0 to 5.
  * - It is hardcoded to be from 0 to 5.
  * - Uses srand(nullptr) in main()
+ * TO DO:
+ * Modify it so that randGen() reads in 
+ * the size of the questions instead of 6 (e.g. questions.size())
+ *
  * @return int: index of question
  */
 int ranGen(const vector<string> & questions){
-    int randomNumber = rand() % questions.size();  // 0 through questions.size() - 1
+    int randomNumber = rand() % static_cast<int>(questions.size());  // 0 through questions.size() - 1
     return randomNumber;
 }
 
@@ -82,7 +86,7 @@ bool writeFile(string filename, const vector<string> & v0, const vector<string> 
     // write under the structure:
     // Student_Name, Question_#
     for(int i = 0; i < v0.size(); i++){
-        outputFile << v0[i] << "," << v1[ranGen()] << endl;
+        outputFile << v0[i] << "," << v1[ranGen(v1)] << endl;
     }
     outputFile.close();
     return true;
