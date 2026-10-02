@@ -16,7 +16,7 @@ RPG::RPG(string name, int hits_taken, float luck, float exp, int level){
     this->luck = luck;
     this->exp = exp;
     this->level = level;
-};
+}
 
 //accessors
 string RPG::getName() const{

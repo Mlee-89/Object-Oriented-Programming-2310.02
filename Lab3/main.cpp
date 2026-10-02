@@ -13,7 +13,7 @@ int main(){
     printf("Hits Taken: %i\t Luck: %f\t Exp: %f\t Level: %i\n", p2.getHitsTaken(), p2.getLuck(), p2.getExp(), p2.getLevel());
 
     p2.setHitsTaken(1);
-    cout << "\n P2 hits taken: " << p2.getHitsTaken() << endl;
+    cout << "\nP2 hits taken: " << p2.getHitsTaken() << endl;
 
     cout << "0 means dead, 1 means alive\n";
     cout << "P1: " << p1.isAlive() << endl;
