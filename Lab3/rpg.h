@@ -1,5 +1,7 @@
 #ifndef RPG_H
 #define RPG_H
+
+#include <string>
 using namespace std;
 const int INVENTORY_SIZE = 10;
 const float HIT_FACTOR = 0.05;

@@ -1,5 +1,6 @@
 #include "rpg.h"
 
+//default constructor
 RPG::RPG(){
     name = "NPC";
     hits_taken = 0;
@@ -8,6 +9,7 @@ RPG::RPG(){
     level = 1;
 };
 
+//parameterized constructor
 RPG::RPG(string name, int hits_taken, float luck, float exp, int level){
     this->name = name;
     this->hits_taken = hits_taken;
@@ -15,3 +17,20 @@ RPG::RPG(string name, int hits_taken, float luck, float exp, int level){
     this->exp = exp;
     this->level = level;
 };
+
+//accessors
+string RPG::getName() const{
+    return name;
+}
+int RPG::getHitsTaken() const{
+    return hits_taken;
+}
+float RPG::getLuck() const{
+    return luck;
+}
+float RPG::getExp() const{
+    return exp;
+}
+int RPG::getLevel() const{
+    return level;
+}
