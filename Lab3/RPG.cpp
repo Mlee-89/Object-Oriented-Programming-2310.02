@@ -34,3 +34,11 @@ float RPG::getExp() const{
 int RPG::getLevel() const{
     return level;
 }
+
+//mutators
+void RPG::setHitsTaken(int new_hits){
+    hits_taken = new_hits;
+}
+bool RPG::isAlive() const{
+    return hits_taken < MAX_HITS_TAKEN;
+}
