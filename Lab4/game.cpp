@@ -64,3 +64,4 @@ void Game::printFinalResults(){
         cout << players[i]->printStats() << endl;
     }
 }
+Game::~Game(){}
