@@ -19,6 +19,7 @@ class RPG{
         void updateExpLevel();
         void attack(RPG * opponent);
         void printStats() const;
+        //destructor
         ~RPG();
 
         //accessors

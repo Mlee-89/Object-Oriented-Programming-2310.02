@@ -61,7 +61,7 @@ void Game::gameLoop(){
 }
 void Game::printFinalResults(){
     for(int i = 0; i < players.size(); i++){
-        cout << players[i]->printStats() << endl;
+        players[i]->printStats();
     }
 }
 Game::~Game(){}

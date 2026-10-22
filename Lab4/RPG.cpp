@@ -65,7 +65,7 @@ void RPG::attack(RPG * opponent){
         opponent->setHitsTaken(opponent->getHitsTaken() + 1);
     }
 }
-string RPG::printStats() const{
-    printf("Name: %s     Hits Taken: %i     Luck: %f     Exp: %f     Level: %i     Status: %b", this->name.c_str(), this->hits_taken, this->luck, this->exp, this->level, this->isAlive());
+void RPG::printStats() const{
+    printf("Name: %s     Hits Taken: %i     Luck: %f     Exp: %f     Level: %i     Status: %s\n", this->name.c_str(), this->hits_taken, this->luck, this->exp, this->level, this->isAlive() ? "Alive" : "Dead");
 }
 RPG::~RPG(){}
