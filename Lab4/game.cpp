@@ -1,5 +1,7 @@
 #include "game.h"
 #include <random>
+#include <iostream>
+using namespace std;
 
 //default constructor
 Game::Game(){
@@ -55,5 +57,10 @@ void Game::battleRound(){
 void Game::gameLoop(){
     while(live_players.size() > 1){
         battleRound();
+    }
+}
+void Game::printFinalResults(){
+    for(int i = 0; i < players.size(); i++){
+        cout << players[i]->printStats() << endl;
     }
 }
