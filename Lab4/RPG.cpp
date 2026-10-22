@@ -55,8 +55,8 @@ void RPG::updateExpLevel(){
     }
 }
 void RPG::attack(RPG * opponent){
-    random_device rd;
-    mt19937 gen(rd()); //seed with random
+    static random_device rd;
+    static mt19937 gen(rd()); //seed with random
     uniform_real_distribution<double> dis(0.0, 1.0);
 
     float random_num = dis(gen);
