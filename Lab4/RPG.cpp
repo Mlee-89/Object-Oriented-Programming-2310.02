@@ -8,7 +8,7 @@ RPG::RPG(){
     luck = 0.1;
     exp = 50.0;
     level = 1;
-};
+}
 
 //overloaded constructor
 RPG::RPG(string name, int hits_taken, float luck, float exp, int level){

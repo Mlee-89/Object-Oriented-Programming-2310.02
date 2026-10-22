@@ -17,8 +17,8 @@ void Game::generatePlayers(int n){
     }
 }
 int Game::selectPlayer(){
-    random_device rd;
-    mt19937 gen(rd());
+    static random_device rd;
+    static mt19937 gen(rd());
     uniform_int_distribution<> dist(0, live_players.size() - 1);
     int randomIndex = dist(gen);
     set<int>::iterator it = live_players.begin();
@@ -36,7 +36,7 @@ void Game::battleRound(){
     int playerIndex1 = selectPlayer();
     int playerIndex2 = selectPlayer();
     if(playerIndex1 == playerIndex2){
-        battleRound();
+        playerIndex2 = selectPlayer();
         return;
     }
     RPG *player1 = players[playerIndex1];

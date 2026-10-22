@@ -13,5 +13,6 @@ int main(){
     game.gameLoop();
     cout << "printing final results" << endl;
     game.printFinalResults();
+    cout << "game over" << endl;
     return 0;
 }
