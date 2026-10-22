@@ -52,3 +52,8 @@ void Game::battleRound(){
             return;
         }
 }
+void Game::gameLoop(){
+    while(live_players.size() > 1){
+        battleRound();
+    }
+}
