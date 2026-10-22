@@ -24,3 +24,9 @@ int Game::selectPlayer(){
     int selectedIndex = *it;
     return selectedIndex;
 }
+void Game::endRound(RPG *winner, RPG *loser, int loserIndex){
+    winner->setHitsTaken(0);
+    live_players.erase(loserIndex);
+    winner->updateExpLevel();
+    printf("%s won against %s\n", winner->getName().c_str(), loser->getName().c_str());
+}
