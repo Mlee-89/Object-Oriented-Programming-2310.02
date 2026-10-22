@@ -30,3 +30,25 @@ void Game::endRound(RPG *winner, RPG *loser, int loserIndex){
     winner->updateExpLevel();
     printf("%s won against %s\n", winner->getName().c_str(), loser->getName().c_str());
 }
+void Game::battleRound(){
+    int playerIndex1 = selectPlayer();
+    int playerIndex2 = selectPlayer();
+    if(playerIndex1 == playerIndex2){
+        battleRound();
+        return;
+    }
+    RPG *player1 = players[playerIndex1];
+    RPG *player2 = players[playerIndex2];
+    while(player1->isAlive() && player2->isAlive()){
+        player1->attack(player2);
+        player2->attack(player1);   
+    }
+    if(!player2->isAlive()){
+            endRound(player1, player2, playerIndex2);
+            return;
+    }
+    if(!player1->isAlive()){
+            endRound(player2, player1, playerIndex1);
+            return;
+        }
+}
